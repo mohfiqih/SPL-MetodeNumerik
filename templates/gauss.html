@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+     <title>Solusi Persamaan Linier</title>
+</head>
+<body style="background: -webkit-linear-gradient(left, #3931af, #00c6ff) !important;">
+<div class="container register">
+                <div class="row">
+                    <div class="col-md-3 register-left">
+                        <h3 style="margin-top: 120px;">Hitung SPL</h3>
+                        <p>Materi Metode Numerik Solusi Persamaan Linier Pemrograman Python</p>
+                    </div>
+                    <div class="col-md-9 register-right">
+                        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="/" role="tab" aria-controls="home" aria-selected="true">E-Gauss</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="/eliminasi" role="tab" aria-controls="profile" aria-selected="false">Eliminasi</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <h3 class="register-heading">Metode Eliminasi Gauss 3 Variabel</h3>
+                                <form method="POST" action="/">
+                                   <div class="row register-form">
+                                        <div class="col-md-6">
+                                             <div class="form-group">
+                                             <input type="text" class="form-control" name="persamaan1" placeholder="Persamaan 1 (ex: 2*x + 5*y - 5*z)" value="" required />
+                                             </div>
+                                             <div class="form-group">
+                                             <input type="text" class="form-control" name="persamaan2" placeholder="Persamaan 2 (ex: 2*x + 5*y - 5*z)" value="" required />
+                                             </div>
+                                             <div class="form-group">
+                                             <input type="text" class="form-control" name="persamaan3" placeholder="Persamaan 3 (ex: 2*x + 5*y - 5*z)" value="" required />
+                                             </div>
+                                             <div class="form-group">
+                                                  <input type="submit" class="btnRegister" data-bs-toggle="modal" data-bs-target="#exampleModal" value="Hitung Solusi"/>
+                                             </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                             <div class="form-group">
+                                             <div class="card" style="overflow-x: auto;">
+                                                  <div class="card-header">
+                                                  <h5>Output: </h5>
+                                                  </div>
+                                                  <div class="card-body">
+                                                  <blockquote class="blockquote mb-0">
+                                                       {% if solusi %}
+                                                  <p style="color: green;font-size: 15px;">Nilai solusi ditemukan!</p>
+                                                  <table class="table" style="font-size: 15px;">
+                                                       <thead>
+                                                       <tr>
+                                                            <th scope="col"></th>
+                                                            <th scope="col">x</th>
+                                                            <th scope="col">y</th>
+                                                            <th scope="col">z</th>
+                                                       </tr>
+                                                       </thead>
+                                                       <tbody>
+                                                       <tr>
+                                                            <th scope="row">Nilai:</th>
+                                                            <td>{{ solusi_x }}</td>
+                                                            <td>{{ solusi_y }}</td>
+                                                            <td>{{ solusi_z }}</td>
+                                                       </tr>
+                                                       </tbody>
+                                                       </table>
+                                                       {% endif %}
+
+                                                       {% if pesan_error %}
+                                                            <p style="color: red;font-size: 15px;">{{ pesan_error }}</p>
+                                                       {% endif %}
+                                                       <footer class="blockquote-footer">Matematika Numerik - <cite title="Source Title">Moh. Fiqih</cite></footer>
+                                                  </blockquote>
+                                                  </div>
+                                             </div>
+
+                                             </div>
+                                        </div>
+                                   </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+</body>
+</html>
